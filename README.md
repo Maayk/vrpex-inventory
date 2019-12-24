@@ -6,7 +6,8 @@ VRPEX-Inventory
 vrp
 vrp_itemdrop (vsummerZ)
 ```
-
+# Open Sound
+Yes, To change, just replace whatever you want.
 
 # English / Informations
 
