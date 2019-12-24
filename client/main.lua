@@ -37,24 +37,24 @@ function FechandoJanela()
 end
 
 
-RegisterNetEvent("reborn-inv:UpdateGui")
-AddEventHandler("reborn-inv:UpdateGui",function()
+RegisterNetEvent("vrpex-inv:UpdateGui")
+AddEventHandler("vrpex-inv:UpdateGui",function()
   UpdateGui()
-  TriggerServerEvent("reborn-inv:openGui")
+  TriggerServerEvent("vrpex-inv:openGui")
 end)
 
 
-RegisterNetEvent("reborn-inv:openGui")
-AddEventHandler("reborn-inv:openGui",function()
+RegisterNetEvent("vrpex-inv:openGui")
+AddEventHandler("vrpex-inv:openGui",function()
     if cooldown > 0 and temp_inventory ~= nil and temp_weight ~= nil and temp_maxWeight ~= nil then
       openGui(temp_inventory, temp_weight, temp_maxWeight)
     else
-      TriggerServerEvent("reborn-inv:openGui")
+      TriggerServerEvent("vrpex-inv:openGui")
     end
 end)
 
-RegisterNetEvent("reborn-inv:updateInventory")
-AddEventHandler("reborn-inv:updateInventory",function(inventory, weight, maxWeight)
+RegisterNetEvent("vrpex-inv:updateInventory")
+AddEventHandler("vrpex-inv:updateInventory",function(inventory, weight, maxWeight)
     cooldown = Config.AntiSpamCooldown
     temp_inventory = inventory
     temp_weight = weight
@@ -62,22 +62,22 @@ AddEventHandler("reborn-inv:updateInventory",function(inventory, weight, maxWeig
     openGui(temp_inventory, temp_weight, temp_maxWeight)
 end)
 
-RegisterNetEvent("reborn-inv:UINotification")
-AddEventHandler("reborn-inv:UINotification",function(type, title, message)
+RegisterNetEvent("vrpex-inv:UINotification")
+AddEventHandler("vrpex-inv:UINotification",function(type, title, message)
     show = true
     SetNuiFocus(true, true)
     SendNUIMessage({show = true,notification = true,type = type,title = title,message = message })
 end)
 
-RegisterNetEvent("reborn-inv:closeGui")
-AddEventHandler("reborn-inv:closeGui",function()
+RegisterNetEvent("vrpex-inv:closeGui")
+AddEventHandler("vrpex-inv:closeGui",function()
   FechandoJanela()
 
   
 end)
 
-RegisterNetEvent("reborn-inv:objectForAnimation")
-AddEventHandler("reborn-inv:objectForAnimation",function(type)
+RegisterNetEvent("vrpex-inv:objectForAnimation")
+AddEventHandler("vrpex-inv:objectForAnimation",function(type)
     local ped = GetPlayerPed(-1)
     DeleteObject(object)
     bone = GetPedBoneIndex(ped, 60309)
@@ -97,23 +97,23 @@ RegisterNUICallback("close",function(data)
 end)
 
 RegisterNUICallback("useItem",function(data)
-    TriggerServerEvent("reborn-inv:useItem", {data})
+    TriggerServerEvent("vrpex-inv:useItem", {data})
     UpdateGui()
-    TriggerEvent("reborn-inv:openGui")
+    TriggerEvent("vrpex-inv:openGui")
 end)
 
 RegisterNUICallback("dropItem",function(data)
-  TriggerServerEvent("reborn-inv:dropItem", data)
+  TriggerServerEvent("vrpex-inv:dropItem", data)
   UpdateGui()
 end)
 
 RegisterNUICallback("giveItem",function(data)
-    TriggerServerEvent("reborn-inv:giveItem", data)
+    TriggerServerEvent("vrpex-inv:giveItem", data)
     UpdateGui()
 end)
 
 RegisterCommand("inventory",function(source, args)
-    TriggerEvent("reborn-inv:openGui")
+    TriggerEvent("vrpex-inv:openGui")
 end)
 
 Citizen.CreateThread(function()while true do
@@ -121,7 +121,7 @@ Citizen.CreateThread(function()while true do
       if IsControlPressed(0, Config.OpenMenu) then
 
         TriggerEvent("rplay_sound:Sound:PlayOnOne","openback",0.3,true)
-        TriggerEvent("reborn-inv:openGui")
+        TriggerEvent("vrpex-inv:openGui")
       end
     end
 end)
