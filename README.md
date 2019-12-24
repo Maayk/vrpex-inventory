@@ -11,7 +11,7 @@ vrp_itemdrop (vsummerZ)
 
 English:
 
-````
+```
 This is an inventory that I worked on for a while while working on VRP 1.0 and redid the whole look and redo some functions (besides converting to vrp 1.0, it was originally made for vrp 0.5)
 
 Inventory now most of the functions update in real time without closing its interface, the whole look has been redesigned to a look that I liked a lot in some Survival game, not 100% need a little more attention, but you can customize the Any way you want.
