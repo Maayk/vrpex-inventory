@@ -182,28 +182,3 @@ function clearSelectedItem() {
   itemAmount = null;
   itemIdname = null;
 }
-
-
-var audioPlayer = null;
-// Listen for NUI Messages.
-window.addEventListener('message', function (event) {
-  // Check for playSound transaction
-  if (event.data.transactionType == "playSound") {
-
-    if (audioPlayer != null) {
-      audioPlayer.pause();
-    }
-
-    audioPlayer = new Audio("./" + event.data.transactionFile + ".ogg");
-    audioPlayer.volume = event.data.transactionVolume;
-    audioPlayer.loop = false;
-    audioPlayer.play();
-
-  }
-  if (event.data.transactionType == "stopSound") {
-    if (audioPlayer != null) {
-      audioPlayer.pause();
-      audioPlayer.currentTime = 0;
-    }
-  }
-});
