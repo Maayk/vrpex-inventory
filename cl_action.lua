@@ -2,8 +2,8 @@ Citizen.CreateThread( function()
 	SetNuiFocus( false )
 end)
 
-RegisterNetEvent('reborn:itens')
-AddEventHandler('reborn:itens', function(inventario, reload)
+RegisterNetEvent('vrpex:itens')
+AddEventHandler('vrpex:itens', function(inventario, reload)
 Citizen.Trace("tutorial launch")
 menuEnabled = not menuEnabled
 	if reload == false then
@@ -33,25 +33,25 @@ function ToggleActionMenu()
 	end 
 end 
 
-RegisterNUICallback('reborn:inventory', function(data, cb)
-	TriggerServerEvent("reborn:inventory")
+RegisterNUICallback('vrpex:inventory', function(data, cb)
+	TriggerServerEvent("vrpex:inventory")
   	cb('ok')
 end)
 
-RegisterNUICallback('reborn:Usar', function(data, cb)
+RegisterNUICallback('vrpex:Usar', function(data, cb)
   	cb('ok')
 end)
 
 RegisterNUICallback('Descartar', function(data, cb)
-	TriggerServerEvent("reborn:trash",data)
+	TriggerServerEvent("vrpex:trash",data)
   	cb('ok')
-  	TriggerServerEvent("reborn:inventory", true)
+  	TriggerServerEvent("vrpex:inventory", true)
 end)
 
 RegisterNUICallback('Enviar', function(data, cb)
-	TriggerServerEvent("reborn:enviar",data)
+	TriggerServerEvent("vrpex:enviar",data)
   	cb('ok')
-  	TriggerServerEvent("reborn:inventory", true)
+  	TriggerServerEvent("vrpex:inventory", true)
 end)
 
 RegisterNUICallback( "ButtonClick", function( data, cb ) 
