@@ -41,13 +41,13 @@ $(document).ready(function () {
   });
   document.onkeyup = function (data) {
     if (data.which == 27) {
-      $.post('http://rplay-inventory/close', JSON.stringify({}));
+      $.post('http://vrpex-inventory/close', JSON.stringify({}));
       $(".container").hide();
       $("body").css("background-image", "none");
     }
   };
   $(".btnClose").click(function () {
-    $.post('http://rplay-inventory/close', JSON.stringify({}));
+    $.post('http://vrpex-inventory/close', JSON.stringify({}));
     $(".container").hide();
     $("body").css("background-image", "none");
   });
@@ -93,7 +93,7 @@ function useItem() {
     )
   } else {
     if(itemIdname) {
-      $.post('http://rplay-inventory/useItem', JSON.stringify({
+      $.post('http://vrpex-inventory/useItem', JSON.stringify({
         idname: itemIdname,
         amount: amount
       }))
@@ -126,7 +126,7 @@ function dropItem() {
     )
   } else {
     if(itemIdname !== null) {
-      $.post('http://rplay-inventory/dropItem', JSON.stringify({
+      $.post('http://vrpex-inventory/dropItem', JSON.stringify({
         idname: itemIdname,
         amount: amount
       }))
@@ -159,7 +159,7 @@ function giveItem() {
     )
   } else {
     if(itemIdname) {
-      $.post('http://rplay-inventory/giveItem', JSON.stringify({
+      $.post('http://vrpex-inventory/giveItem', JSON.stringify({
         idname: itemIdname,
         amount: amount
       }))
