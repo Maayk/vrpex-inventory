@@ -42,7 +42,7 @@ $(document).ready(function () {
   document.onkeyup = function (data) {
     if (data.which == 27) {
       $.post('http://vrpex-inventory/close', JSON.stringify({}));
-      $(".container").hide();
+      $(".container").FadeOut('slow');
       $("body").css("background-image", "none");
     }
   };
@@ -54,7 +54,7 @@ $(document).ready(function () {
 });
 
 function open() {
-  $(".container").show();
+  $(".container").fadeIn('slow');
   $("body").css("background-image", "radial-gradient(ellipse farthest-corner at 45px 45px, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) )");
   $("#home").css("display", "show");
   clearSelectedItem();
