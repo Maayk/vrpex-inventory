@@ -18,6 +18,7 @@ end)
 function openGui(inventory, weight, maxWeight)
   if show == false then
     show = true
+    TransitionToBlurred(99)
     SetNuiFocus(true, true)
     SendNUIMessage({show = true,inventory = inventory,weight = weight,maxWeight = maxWeight})
     IsPauseMenuActive(true)
@@ -33,6 +34,7 @@ end
 function FechandoJanela()
   show = false
   SetNuiFocus(false)
+  TransitionFromBlurred(99)
   SendNUIMessage({show = false})
 end
 
