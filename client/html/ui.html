@@ -1,0 +1,77 @@
+<head>
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="../../configNui.js" type="text/javascript"></script>
+	<script src="scripts.js" type="text/javascript"></script>
+	<script src="debounce.min.js" type="text/javascript"></script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="styles.css" type="text/css">
+	<script src="sweetalert2.all.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+	<div class="full-screen">
+		<div class="container">
+			<div class="header">
+				<div class="HLeft"></div>
+				<div class="LineBottom2"></div>
+				<div class="Titulo">Mochila</div>
+				<div class="LineBottom"></div>
+			</div>
+
+			<div id="sections">
+				<div class="left-titulo">
+					<span class="left-titulo">Armamentos</span>
+				</div>
+				<div class="box-left">
+					<div class="e-Arma"></div>
+					<div class="Arma-branca"></div>
+				</div>
+
+				<div class="box-center">
+					<div class="Box-Titulo">
+						<div class="buttonsact">
+							<div class="Titulo-Opc">Opções - <span style="font-size: 11px;color: pink;">Utilize as opções abaixo</span></div>
+							<div class="weight">30/90kg</div>
+							<input class="Quantidade" id="amount" type="number" placeholder="Antal" value="1"oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							<button	id="Usar" class="function" onclick="useItem()">Usar</button>
+							<button	id="Dropar" class="function" onclick="dropItem()">Dropar</button>
+							<button	id="Enviar" class="function" onclick="giveItem()">Enviar</button>
+						</div>
+					</div>
+					<div class="Titulo-Inv">Sua Mochila</div>
+				</div>
+				
+				<div id="home"></div>
+					<div id="items" class="flex"></div>
+				</div>
+
+				<div class="box-right">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+<!-- 
+	<div class="container">
+		<span class="Titulo">MOCHILA</span>
+		<span class="desctitulo">Sua mochila pode ser expandida em até 3 vezes.</span>
+		<button class="btnClose"><i class="fas fa-times fa-2x"></i></button>
+
+		<div id="sections" class="flex">
+			<input class="Quantidade" id="amount" type="number" placeholder="Antal" value="1"oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+			<button	id="Usar" class="function" onclick="useItem()">Usar</button>
+			<button	id="Dropar" class="function" onclick="dropItem()">Dropar</button>
+			<button	id="Enviar" class="function" onclick="giveItem()">Enviar</button>
+			<p class="weight"></p>
+			
+			<div id="home"></div>
+				<div id="items" class="flex"></div>
+			</div>
+		</div>
+	</div>
+-->
