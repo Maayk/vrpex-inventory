@@ -2,7 +2,7 @@ local Tunnel = module("vrp", "lib/Tunnel")
 local Proxy = module("vrp", "lib/Proxy")
 
 vRP = Proxy.getInterface("vRP")
-vRPclient = Tunnel.getInterface("vRP", "reborn-inventory")
+vRPclient = Tunnel.getInterface("vRP", "vrpex-inventory")
 
 RegisterServerEvent("reborn-inv:openGui")
 AddEventHandler("reborn-inv:openGui",function()
