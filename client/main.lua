@@ -119,8 +119,6 @@ end)
 Citizen.CreateThread(function()while true do
       Citizen.Wait(1)
       if IsControlPressed(0, Config.OpenMenu) then
-
-        TriggerEvent("rplay_sound:Sound:PlayOnOne","openback",0.3,true)
         TriggerEvent("vrpex-inv:openGui")
       end
     end
@@ -139,24 +137,4 @@ AddEventHandler("onResourceStop",function(resource)
     if resource == GetCurrentResourceName() then
       UpdateGui()
     end
-end)
-
-
-
-Citizen.CreateThread(function()
-	RegisterNetEvent('rplay_sound:Sound:PlayOnOne')
-	AddEventHandler('rplay_sound:Sound:PlayOnOne', function(soundFile, soundVolume, loop)
-	    SendNUIMessage({
-	        transactionType     = 'playSound',
-	        transactionFile     = soundFile,
-	        transactionVolume   = soundVolume,
-			transactionLoop   = loop
-	    })
-	end)
-	RegisterNetEvent('rplay_sound:Sound:StopOnOne')
-	AddEventHandler('rplay_sound:Sound:StopOnOne', function()
-	    SendNUIMessage({
-	        transactionType     = 'stopSound'
-	    })
-	end)
 end)
