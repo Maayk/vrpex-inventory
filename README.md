@@ -7,9 +7,8 @@ vrp
 vrp_itemdrop (vsummerZ)
 ```
 
-# Informations / Informações
 
-English:
+# English / Informations
 
 This is an inventory that I worked on for a while while working on VRP 1.0 and redid the whole look and redo some functions (besides converting to vrp 1.0, it was originally made for vrp 0.5)
 
@@ -23,7 +22,7 @@ I hope you use and modify the taste that you think is best and can share with th
 
 Enjoy.
 
-Portugues:
+# Informações em Portugues
 
 Este é um inventário que eu trabalhei por algum tempo enquanto estava mexendo na VRP 1.0 e refiz todo o visual e refiz algumas funções ( alem de converter para vrp 1.0, originalmente era feito para vrp 0.5 ) 
 
