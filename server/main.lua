@@ -4,8 +4,8 @@ local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP", "vrpex-inventory")
 
-RegisterServerEvent("reborn-inv:openGui")
-AddEventHandler("reborn-inv:openGui",function()
+RegisterServerEvent("vrpex-inv:openGui")
+AddEventHandler("vrpex-inv:openGui",function()
     local user_id = vRP.getUserId(source)
     local player = vRP.getUserSource(user_id)
     local data = vRP.getUserDataTable(user_id)
@@ -25,12 +25,12 @@ AddEventHandler("reborn-inv:openGui",function()
         end
         local weight = vRP.getInventoryWeight(user_id)
         local maxWeight = vRP.getInventoryMaxWeight(user_id)
-        TriggerClientEvent("reborn-inv:updateInventory", source, inventory, weight, maxWeight)
+        TriggerClientEvent("vrpex-inv:updateInventory", source, inventory, weight, maxWeight)
     end
 end)
 
-RegisterServerEvent("reborn-inv:useItem")
-AddEventHandler("reborn-inv:useItem",function(args)
+RegisterServerEvent("vrpex-inv:useItem")
+AddEventHandler("vrpex-inv:useItem",function(args)
     local data = args[1]
     local user_id = vRP.getUserId(source)
     local player = vRP.getUserSource(user_id)
@@ -43,22 +43,21 @@ AddEventHandler("reborn-inv:useItem",function(args)
     end
 end)
 
-RegisterServerEvent("reborn-inv:dropItem")
-AddEventHandler("reborn-inv:dropItem",function(data)
+RegisterServerEvent("vrpex-inv:dropItem")
+AddEventHandler("vrpex-inv:dropItem",function(data)
     local user_id = vRP.getUserId(source)
     local player = vRP.getUserSource(user_id)
     local amount = parseInt(data.amount)
     local px,py,pz = vRPclient.getPosition(source)
     print("1 Drop Item")
     if vRP.tryGetInventoryItem(user_id, data.idname, amount, false) then
-        TriggerClientEvent("reborn-inv:closeGui", player)
-        TriggerClientEvent("reborn-inv:UpdateGui", player)
+        TriggerClientEvent("vrpex-inv:closeGui", player)
+        TriggerClientEvent("vrpex-inv:UpdateGui", player)
         TriggerEvent("DropSystem:create",data.idname,amount,px,py,pz)
         vRPclient._playAnim(source,true,{{"pickup_object","pickup_low"}},false)
         TriggerClientEvent("Notify",player,"sucesso","Você jogou fora "..amount.."x "..data.idname,2500)
     else
         TriggerClientEvent("Notify",player,"sucesso","Ainda não sei ",2500)
-        --TriggerClientEvent("reborn-inv:UINotification",player,"warning",Config.Language.WarningTitle,Config.Language.Error)
     end
     print("2 Drop Item")
 end)
@@ -76,7 +75,7 @@ function useItem(user_id, player, idname, type, variation, amount)
     if type == "drink" or type == "food" or type == "drugs" or type == "heal" or type == "weapon" or type == "ammo" then
         if type == "drink" then
             if vRP.tryGetInventoryItem(user_id, idname, tonumber(amount), false) then
-                TriggerClientEvent("reborn-inv:objectForAnimation", player, "prop_ld_flow_bottle")
+                TriggerClientEvent("vrpex-inv:objectForAnimation", player, "prop_ld_flow_bottle")
                 vRPclient._playAnim(source,true,{{"mp_player_intdrink","intro_bottle"}},false)
                 play_drink(player)
                 for i = 1, tonumber(amount) do
@@ -86,7 +85,7 @@ function useItem(user_id, player, idname, type, variation, amount)
         end
         if type == "food" then
             if vRP.tryGetInventoryItem(user_id, idname, tonumber(amount), false) then
-                TriggerClientEvent("reborn-inv:objectForAnimation", player, "prop_cs_burger_01")
+                TriggerClientEvent("vrpex-inv:objectForAnimation", player, "prop_cs_burger_01")
                 play_eat(player)
                 for i = 1, tonumber(amount) do
                     vRP.varyHunger(user_id, variation)
@@ -95,7 +94,7 @@ function useItem(user_id, player, idname, type, variation, amount)
         end
         if type == "drugs" then
             if vRP.tryGetInventoryItem(user_id, idname, tonumber(amount), false) then
-                TriggerClientEvent("reborn-inv:objectForAnimation", player, "prop_cs_burger_01")
+                TriggerClientEvent("vrpex-inv:objectForAnimation", player, "prop_cs_burger_01")
                 play_eat(player)
                 for i = 1, tonumber(amount) do
                     vRP.varyHunger(user_id, variation)
@@ -130,17 +129,17 @@ function useItem(user_id, player, idname, type, variation, amount)
                     vRPclient.giveWeapons(player,{[fullidname[2]] = {ammo = tonumber(amount)}},false)
                 end
             else
-                TriggerClientEvent("reborn-inv:UINotification",player,"warning",Config.Language.WarningTitle,Config.Language.WeaponNotEquipped)
+                TriggerClientEvent("vrpex-inv:UINotification",player,"warning",Config.Language.WarningTitle,Config.Language.WeaponNotEquipped)
             end
         end
     end
     if type == "none" then
-        TriggerClientEvent("reborn-inv:UINotification",player,"warning",Config.Language.WarningTitle,Config.Language.CannotBeUsed)
+        TriggerClientEvent("vrpex-inv:UINotification",player,"warning",Config.Language.WarningTitle,Config.Language.CannotBeUsed)
     end
 end
 
-RegisterServerEvent("reborn-inv:giveItem")
-AddEventHandler("reborn-inv:giveItem",function(data)
+RegisterServerEvent("vrpex-inv:giveItem")
+AddEventHandler("vrpex-inv:giveItem",function(data)
         local user_id = vRP.getUserId(source)
         local player = vRP.getUserSource(user_id)
         if user_id ~= nil then
@@ -153,8 +152,8 @@ AddEventHandler("reborn-inv:giveItem",function(data)
                             if new_weight <= vRP.getInventoryMaxWeight(nuser_id) then
                                 if vRP.tryGetInventoryItem(user_id, data.idname, amount, false) then
                                     vRP.giveInventoryItem(nuser_id, data.idname, amount, true)
-                                    TriggerClientEvent("reborn-inv:closeGui", player)
-                                    TriggerClientEvent("reborn-inv:UpdateGui", player)
+                                    TriggerClientEvent("vrpex-inv:closeGui", player)
+                                    TriggerClientEvent("vrpex-inv:UpdateGui", player)
                                               vRPclient._playAnim(player,true,{{"mp_common","givetake1_a"}},false)
                                     vRPclient._playAnim(nplayer,true,{{"mp_common","givetake1_a"}},false)
                                     TriggerClientEvent("Notify",player,"sucesso","Você enviou "..amount.."x "..data.idname,2500)
