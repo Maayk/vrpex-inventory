@@ -42,7 +42,8 @@ $(document).ready(function () {
   document.onkeyup = function (data) {
     if (data.which == 27) {
       $.post('http://vrpex-inventory/close', JSON.stringify({}));
-      $(".container").FadeOut('slow');
+      $(".container").fadeOut();
+      //$(".container").hide(); anyone having a problem with fadeOut() ? why? use this.
       $("body").css("background-image", "none");
     }
   };
